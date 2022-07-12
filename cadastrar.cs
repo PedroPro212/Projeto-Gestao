@@ -56,7 +56,7 @@ namespace Login
                 c.Parameters.Add(new SqlParameter("@Quantidade", this.txt_quant.Text));
                 c.Parameters.Add(new SqlParameter("@QComprou", this.txt_quem.Text));
 
-                SqlParameter imagem = new SqlParameter("@Imagem", SqlDbType.Binary);
+                SqlParameter imagem = new SqlParameter("@Imagem", SqlDbType.VarBinary);
 
                 imagem.Value = foto;
 
@@ -216,7 +216,7 @@ namespace Login
             {
                 SqlCommand comm = conn.CreateCommand();
                 conn.Open();
-                comm.CommandText = "UPDATE [dbo].[CadastrarProduto] SET [Nome] ='" + txt_nome.Text + "',[PrecoUn] ='" + txt_preco.Text + "',[Data] ='" + txt_data.Text + "',[Categoria] ='" + txt_categ.Text + "',[Quantidade] ='" + txt_quant.Text + "',[QComprou] ='" + txt_quem.Text + "',[Imagem] = CAST('" +  picture_image + "'AS VARCHAR(300)) WHERE [id] =" + txtid.Text;
+                comm.CommandText = "UPDATE [dbo].[CadastrarProduto] SET [Nome] ='" + txt_nome.Text + "',[PrecoUn] ='" + txt_preco.Text + "',[Data] ='" + txt_data.Text + "',[Categoria] ='" + txt_categ.Text + "',[Quantidade] ='" + txt_quant.Text + "',[QComprou] ='" + txt_quem.Text + "',[Imagem] ='" + picture_image + "'WHERE [id] =" + txtid.Text;
 
                 comm.ExecuteNonQuery();
                 MessageBox.Show("Foi atualizado com sucesso!");
